@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/data/datasources/movie_remote_data_source.dart';
 import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
 import 'package:ditonton/data/models/movie_detail_model.dart';
@@ -14,15 +15,14 @@ import '../../json_reader.dart';
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {
-  const API_KEY = 'api_key=2174d146bb9c0eab47529b2e77d6b526';
-  const BASE_URL = 'https://api.themoviedb.org/3';
-
   late MovieRemoteDataSourceImpl dataSource;
   late TvRemoteDataSourceImpl dataSourceTv;
   late MockHttpClient mockHttpClient;
 
+   
   setUp(() {
     mockHttpClient = MockHttpClient();
+     
     dataSource = MovieRemoteDataSourceImpl(client: mockHttpClient);
     dataSourceTv = TvRemoteDataSourceImpl(client: mockHttpClient);
   });

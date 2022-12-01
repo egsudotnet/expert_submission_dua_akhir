@@ -59,7 +59,9 @@ class ResultMovie extends StatelessWidget {
                 } else if (data.state == RequestState.Loaded) {
                   final result = data.searchResult;
                   return Expanded(
-                    child: ListView.builder(
+                    child: data.searchResult.length == 0 ? 
+                      Center(child: Text("Empty")) :
+                      ListView.builder(
                       padding: const EdgeInsets.only(right: 8,bottom: 5, left: 8),
                       itemBuilder: (context, index) {
                         final movie = data.searchResult[index];
@@ -96,7 +98,9 @@ class ResultTv extends StatelessWidget {
                 } else if (data.state == RequestState.Loaded) {
                   final result = data.searchResult;
                   return Expanded(
-                    child: ListView.builder(
+                    child: data.searchResult.length == 0 ? 
+                      Center(child: Text("Empty")) :
+                      ListView.builder(
                       padding: const EdgeInsets.only(right: 8,bottom: 5, left: 8),
                       itemBuilder: (context, index) {
                         final tv = data.searchResult[index];
