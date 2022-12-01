@@ -1,3 +1,4 @@
+import 'package:ditonton/bloc/search/search_bloc.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/https_ssl_pinning.dart';
 import 'package:ditonton/common/utils.dart';
@@ -39,6 +40,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  final counterBloc = SearchBloc();
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
