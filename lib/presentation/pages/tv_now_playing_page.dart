@@ -1,8 +1,7 @@
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/presentation/provider/tv_now_playing_notifier.dart';
+import 'package:ditonton/bloc_cubit/tvs/tv_now_playing_cubit.dart';
 import 'package:ditonton/presentation/widgets/tv_card_list.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TvNowPlayingPage extends StatefulWidget {
   static const ROUTE_NAME = '/now-playing-tv';
@@ -15,9 +14,9 @@ class _TvNowPlayingPageState extends State<TvNowPlayingPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        Provider.of<TvNowPlayingNotifier>(context, listen: false)
-            .fetchTvNowPlaying());
+    Future.microtask(
+      () => context.read<TvNowPlayingCubit>().fetchNowPlayingTv(),
+    );
   }
 
   @override
@@ -28,25 +27,27 @@ class _TvNowPlayingPageState extends State<TvNowPlayingPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<TvNowPlayingNotifier>(
-          builder: (context, data, child) {
-            if (data.state == RequestState.Loading) {
+        child: BlocBuilder<TvNowPlayingCubit, TvNowPlayingState>(
+          builder: (context, data) {
+            if (data is TvNowPlayingLoading) {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (data.state == RequestState.Loaded) {
+            } else if (data is TvNowPlayingLoaded) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final tv = data.tvs[index];
+                  final tv = data.nowPlayingTv[index];
                   return TvCard(tv);
                 },
-                itemCount: data.tvs.length,
+                itemCount: data.nowPlayingTv.length,
               );
-            } else {
+            } else if (data is TvNowPlayingError) {
               return Center(
                 key: Key('error_message'),
                 child: Text(data.message),
               );
+            }else {
+              return const SizedBox();
             }
           },
         ),

@@ -1,10 +1,9 @@
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
-import 'package:ditonton/presentation/provider/tv_search_notifier.dart';
+import 'package:ditonton/bloc/movies/search/search_movies_bloc.dart';
+import 'package:ditonton/bloc/tvs/search/search_tvs_bloc.dart';
 import 'package:ditonton/presentation/widgets/movie_card_list.dart';
 import 'package:ditonton/presentation/widgets/tv_card_list.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchPage extends StatelessWidget {
   static const ROUTE_NAME = '/search';
@@ -21,11 +20,10 @@ class SearchPage extends StatelessWidget {
               ],
             ),
             title: TextField(
-                  onSubmitted: (query) {
-                    Provider.of<MovieSearchNotifier>(context, listen: false)
-                        .fetchMovieSearch(query);
-                    Provider.of<TvSearchNotifier>(context, listen: false)
-                        .fetchTvSearch(query);
+                  key: const Key('query_input'),
+                  onChanged: (query) {
+                    context.read<SearchMoviesBloc>().add(OnChangeMovieQuery(query));
+                    context.read<SearchTvsBloc>().add(OnChangeTvQuery(query));
                   },
                   decoration: InputDecoration(
                     hintText: 'Search title',
@@ -50,33 +48,37 @@ class ResultMovie extends StatelessWidget {
     return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Consumer<MovieSearchNotifier>(
-              builder: (context, data, child) {
-                if (data.state == RequestState.Loading) {
-                  return Center(
+            BlocBuilder<SearchMoviesBloc, SearchMoviesState>(
+              builder: (context, movie) {
+                if (movie is SearchMoviesLoading) {
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (data.state == RequestState.Loaded) {
-                  final result = data.searchResult;
+                } else if (movie is SearchMoviesHasData) {
                   return Expanded(
-                    child: data.searchResult.length == 0 ? 
-                      Center(child: Text("Empty")) :
-                      ListView.builder(
-                      padding: const EdgeInsets.only(right: 8,bottom: 5, left: 8),
+                    child: movie.result.length == 0 ? 
+                      Center(child: Text("Empty")) :ListView.builder(
+                      key: const Key('search_list'),
+                      padding: const EdgeInsets.all(8),
                       itemBuilder: (context, index) {
-                        final movie = data.searchResult[index];
-                        return MovieCard(movie);
+                        return MovieCard(movie.result[index]);
                       },
-                      itemCount: result.length,
+                      itemCount: movie.result.length,
+                    ),
+                  );
+                } else if (movie is SearchMoviesError) {
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height / 2,
+                    child: Center(
+                      key: const Key('error_message'),
+                      child: Text(movie.message),
                     ),
                   );
                 } else {
-                  return Expanded(
-                    child: Container(),
-                  );
+                  return const SizedBox();
                 }
               },
-            )
+            ),
           ]
     );
   
@@ -89,30 +91,34 @@ class ResultTv extends StatelessWidget {
     return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Consumer<TvSearchNotifier>(
-              builder: (context, data, child) {
-                if (data.state == RequestState.Loading) {
-                  return Center(
+            BlocBuilder<SearchTvsBloc, SearchTvsState>(
+              builder: (context, movie) {
+                if (movie is SearchTvsLoading) {
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (data.state == RequestState.Loaded) {
-                  final result = data.searchResult;
+                } else if (movie is SearchTvsHasData) {
                   return Expanded(
-                    child: data.searchResult.length == 0 ? 
-                      Center(child: Text("Empty")) :
-                      ListView.builder(
-                      padding: const EdgeInsets.only(right: 8,bottom: 5, left: 8),
+                    child: movie.result.length == 0 ? 
+                      Center(child: Text("Empty")) :ListView.builder(
+                      key: const Key('search_list'),
+                      padding: const EdgeInsets.all(8),
                       itemBuilder: (context, index) {
-                        final tv = data.searchResult[index];
-                        return TvCard(tv);
+                        return TvCard(movie.result[index]);
                       },
-                      itemCount: result.length,
+                      itemCount: movie.result.length,
+                    ),
+                  );
+                } else if (movie is SearchTvsError) {
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height / 2,
+                    child: Center(
+                      key: const Key('error_message'),
+                      child: Text(movie.message),
                     ),
                   );
                 } else {
-                  return Expanded(
-                    child: Container(),
-                  );
+                  return const SizedBox();
                 }
               },
             ),
