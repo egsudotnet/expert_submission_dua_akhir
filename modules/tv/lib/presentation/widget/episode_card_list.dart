@@ -100,9 +100,10 @@ class _EpisodeCardListState extends State<EpisodeCardList> {
                           const SizedBox(
                             height: 8,
                           ),
-                          Text(
+                          Text( 
                             data.overview,
                             overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
                           )
                         ],
                       ),
