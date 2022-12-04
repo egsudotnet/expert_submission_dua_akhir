@@ -1,7 +1,7 @@
 part of "watchlist_page.dart";
 
 class WatchlistMoviePart extends StatelessWidget {
-  const WatchlistMoviePart({super.key}); 
+  const WatchlistMoviePart({Key? key}) : super(key: key); 
 
   @override
   Widget build(BuildContext context) {

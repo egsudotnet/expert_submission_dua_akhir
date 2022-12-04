@@ -17,7 +17,8 @@ class SearchMoviePart extends StatelessWidget {
                 } else if (data is SearchMoviesHasData) {
                   return Expanded(
                     child: data.result.isEmpty ? 
-                      const Center(child: Text("Empty")) :ListView.builder(
+                      const Center(child: Text("Empty")) :
+                      ListView.builder(
                       key: const Key('search_list'),
                       padding: const EdgeInsets.all(8),
                       itemBuilder: (context, index) {

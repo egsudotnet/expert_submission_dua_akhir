@@ -9,7 +9,7 @@ part 'search_tvs_event.dart';
 part 'search_tvs_state.dart';
 
 class SearchTvsBloc
-    extends Bloc<SearchTvEvent, SearchTvsState> {
+    extends Bloc<SearchTvsEvent, SearchTvsState> {
   final SearchTv searchTv;
 
   SearchTvsBloc({required this.searchTv})

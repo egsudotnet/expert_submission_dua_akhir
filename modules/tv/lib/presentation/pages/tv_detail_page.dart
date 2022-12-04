@@ -187,6 +187,7 @@ class _DetailTvContentState extends State<DetailTvContent>
                               _showGenres(widget.tv.genres!),
                             ),
                             Text(
+                              widget.tv.episodeRunTime.isEmpty ? "" :
                               _showDuration(widget.tv.episodeRunTime[0]),
                             ),
                             Row(
@@ -243,8 +244,7 @@ class _DetailTvContentState extends State<DetailTvContent>
                               'Recommendations',
                               style: kHeading6,
                             ),
-                            BlocBuilder<TvDetailCubit,
-                                TvDetailState>(
+                            BlocBuilder<TvDetailCubit, TvDetailState>(
                               builder: (context, recommendations) {
                                 if (recommendations
                                     is TvRecommendationLoading) {
@@ -259,8 +259,7 @@ class _DetailTvContentState extends State<DetailTvContent>
                                     recommendations.message,
                                     key: const Key('recommended_error'),
                                   );
-                                } else if (recommendations
-                                    is TvDetailLoaded) {
+                                } else if (recommendations is TvDetailLoaded) {
                                   return SizedBox(
                                     height: 150,
                                     child: ListView.builder(

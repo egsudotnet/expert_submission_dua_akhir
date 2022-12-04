@@ -2,29 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:movie/domain/entities/movie.dart';
 import 'package:search/search.dart';
+import 'package:movie/domain/entities/movie.dart';
 
-import 'search_movie_page_test.mock.dart';
+import 'search_page_test.mock.dart'; 
 
 void main() {
-  late MockSearchMoviesBloc mockMovieBloc;
+  late MockSearchMoviesBloc mockMovieBloc; 
 
   setUpAll(() {
     registerFallbackValue(SearchMoviesStateFake());
-    registerFallbackValue(SearchMoviesEventFake());
+    registerFallbackValue(SearchMoviesEventFake()); 
   });
 
   setUp(() {
     mockMovieBloc = MockSearchMoviesBloc();
-  });
+  }); 
 
   Widget _makeTestableWidget(Widget body) {
     return BlocProvider<SearchMoviesBloc>.value(
-      value: mockMovieBloc,
-      child: MaterialApp(
-        home: body,
-      ),
+        value: mockMovieBloc,
+        child: MaterialApp(
+            home: body,
+          )
     );
   }
 
@@ -41,16 +41,16 @@ void main() {
     expect(loadingWidget, findsOneWidget);
   });
 
-  testWidgets('Page should display ListView when data is loaded',
+  testWidgets('Page should display SearchMoviesPart when data is loaded',
       (WidgetTester tester) async {
     when(() => mockMovieBloc.state)
         .thenReturn(const SearchMoviesHasData(<Movie>[]));
 
-    final listViewFinder = find.byType(ListView);
+    final searchMoviePartFinder = find.byType(SearchPage);
 
     await tester.pumpWidget(_makeTestableWidget(const SearchPage()));
 
-    expect(listViewFinder, findsOneWidget);
+    expect(searchMoviePartFinder, findsOneWidget);
   });
 
   testWidgets('Page should display error message when error',
@@ -63,19 +63,5 @@ void main() {
     await tester.pumpWidget(_makeTestableWidget(const SearchPage()));
 
     expect(emptyMessage, findsOneWidget);
-  });
-
-  testWidgets('Page should display ListView when query id typed',
-      (WidgetTester tester) async {
-    when(() => mockMovieBloc.state)
-        .thenReturn(const SearchMoviesHasData(<Movie>[]));
-
-    final textfieldFinder = find.byKey(const Key('query_input'));
-
-    await tester.pumpWidget(_makeTestableWidget(const SearchPage()));
-    await tester.enterText(textfieldFinder, 'Venom');
-    await tester.testTextInput.receiveAction(TextInputAction.done);
-
-    verify(() => mockMovieBloc.add(const OnChangeMovieQuery('Venom')));
   });
 }

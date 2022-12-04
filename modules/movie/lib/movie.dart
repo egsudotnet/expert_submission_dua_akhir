@@ -17,3 +17,4 @@ export 'presentation/cubit/movie_detail_cubit.dart';
 export 'presentation/cubit/movie_now_playing_cubit.dart';
 export 'presentation/cubit/movie_popular_cubit.dart';
 export 'presentation/cubit/movie_top_rated_cubit.dart';
+ 

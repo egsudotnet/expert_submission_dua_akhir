@@ -17,6 +17,7 @@ class ResultMovie extends StatelessWidget {
               builder: (context, data) {
             if (data is MovieNowPlayingLoading) {
               return const Center(
+                key: Key('center_progressbar'),
                 child: CircularProgressIndicator(),
               );
             } else if (data is MovieNowPlayingLoaded) {
@@ -35,6 +36,7 @@ class ResultMovie extends StatelessWidget {
               builder: (context, data) {
             if (data is MoviePopularLoading) {
               return const Center(
+                key: Key('center_progressbar'),
                 child: CircularProgressIndicator(),
               );
             } else if (data is MoviePopularLoaded) {
@@ -53,6 +55,7 @@ class ResultMovie extends StatelessWidget {
               builder: (context, data) {
             if (data is MovieTopRatedLoading) {
               return const Center(
+                key: Key('center_progressbar'),
                 child: CircularProgressIndicator(),
               );
             } else if (data is MovieTopRatedLoaded) {
