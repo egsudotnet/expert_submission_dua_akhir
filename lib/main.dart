@@ -1,11 +1,11 @@
 import 'package:about/about_page.dart';
 import 'package:core/core.dart';
+import 'package:ditonton/firebase_options.dart';
 import 'package:ditonton/injection.dart' as di;
-// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home/presentation/pages/home_page.dart';
-// import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie/movie.dart';
 import 'package:search/search.dart';
 import 'package:tv/tv.dart';
@@ -13,9 +13,9 @@ import 'package:watchlist/watchlist.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
-
-  // await dotenv.load(fileName: '.env');
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   di.init(await getHttpClient());
   runApp(MyApp());

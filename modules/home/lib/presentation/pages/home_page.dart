@@ -1,5 +1,6 @@
 import 'package:core/core.dart';
 import 'package:core/utils/routes.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home/presentation/widget/image_card.dart';

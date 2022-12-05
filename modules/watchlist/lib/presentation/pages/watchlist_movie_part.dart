@@ -5,13 +5,7 @@ class WatchlistMoviePart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Watchlist'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: BlocBuilder<WatchlistCubit, WatchlistState>(
+    return BlocBuilder<WatchlistCubit, WatchlistState>(
           builder: (context, watchlist) {
             if (watchlist is WatchlistInitial) {
               return SizedBox(
@@ -62,8 +56,6 @@ class WatchlistMoviePart extends StatelessWidget {
               return const SizedBox();
             }
           },
-        ),
-      ),
-    );
+        );
   }
 }

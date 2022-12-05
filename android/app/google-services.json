@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "610831962818",
+    "project_id": "expert-submission-2-akhir",
+    "storage_bucket": "expert-submission-2-akhir.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610831962818:android:3da7b8b03ce4bc5efde15b",
+        "android_client_info": {
+          "package_name": "com.dicoding.ditonton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610831962818-itbs9qrvpql1nvffabu4aintd6is8mn6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1tQyQ5vptcZ9p0JkljS9jo-HEJB63mVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610831962818-itbs9qrvpql1nvffabu4aintd6is8mn6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610831962818-8n0ukt5ah10mfoe6hlaiqdnmvogmofos.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.egsuditontonfinalios.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610831962818:android:49248485088159e7fde15b",
+        "android_client_info": {
+          "package_name": "com.egsuditontonfinal.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610831962818-itbs9qrvpql1nvffabu4aintd6is8mn6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1tQyQ5vptcZ9p0JkljS9jo-HEJB63mVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610831962818-itbs9qrvpql1nvffabu4aintd6is8mn6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610831962818-8n0ukt5ah10mfoe6hlaiqdnmvogmofos.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.egsuditontonfinalios.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
