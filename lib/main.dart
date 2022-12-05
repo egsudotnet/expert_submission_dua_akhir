@@ -90,12 +90,8 @@ class MyApp extends StatelessWidget {
               );
             case SearchPage.routeName:
               return MaterialPageRoute(builder: (_) => SearchPage());
-            // case SearchTvPage.routeName:
-            //   return MaterialPageRoute(builder: (_) => SearchTvPage());
             case WatchlistPage.routeName:
               return MaterialPageRoute(builder: (_) => WatchlistPage());
-            // case HomeTvPage.routeName:
-            //   return MaterialPageRoute(builder: (_) => HomeTvPage());
             case NowPlayingTvPage.routeName:
               return MaterialPageRoute(builder: (_) => NowPlayingTvPage());
             case TvDetailPage.routeName:

@@ -210,11 +210,40 @@ class _DetailTvContentState extends State<DetailTvContent>
                             TabBar(
                               controller: tabController,
                               isScrollable: true,
-                              indicatorColor: kMikadoYellow,
+                              indicatorColor: kMikadoYellow, 
                               labelPadding: const EdgeInsets.all(5),
                               padding: const EdgeInsets.all(5),
+                              unselectedLabelColor: kDavysGrey,
                               tabs: widget.tv.seasons
-                                  .map((season) => Text(season.name))
+                                  .map((season) => 
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [ 
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(6),
+                                        child: season.posterPath.isEmpty
+                                            ? const SizedBox(
+                                                width: 50,
+                                                height: 50,
+                                                child: Icon(Icons.error),
+                                              )
+                                            : CachedNetworkImage(
+                                                imageUrl: '$baseImageUrl${season.posterPath}',
+                                                fit: BoxFit.cover,
+                                                width: 50,
+                                                height: 50,
+                                                placeholder: (context, url) => const Center(
+                                                  child: CircularProgressIndicator(),
+                                                ),
+                                                errorWidget: (context, url, error) =>
+                                                    const Icon(Icons.error),
+                                              ),
+                                      ),
+                                      Text(season.name), 
+
+                                    ]
+                                    )
+                                  )
                                   .toList(),
                             ),
                             SizedBox(
@@ -315,9 +344,7 @@ class _DetailTvContentState extends State<DetailTvContent>
                 ),
               );
             },
-            // initialChildSize: 0.5,
             minChildSize: 0.25,
-            // maxChildSize: 1.0,
           ),
         ),
         Padding(

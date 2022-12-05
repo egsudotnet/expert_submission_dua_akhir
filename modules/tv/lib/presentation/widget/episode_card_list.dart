@@ -85,11 +85,22 @@ class _EpisodeCardListState extends State<EpisodeCardList> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Episode ${data.episodeNumber}',
-                            style: kHeading6,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  'Episode ${data.episodeNumber}',
+                                  style: kSubtitle,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              Text(
+                                data.airDate,
+                                style: kSubtitle,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+
+                          ]),
                           Text(
                             data.name,
                             style: kBodyText.copyWith(
@@ -102,7 +113,7 @@ class _EpisodeCardListState extends State<EpisodeCardList> {
                           ),
                           Text( 
                             data.overview,
-                            overflow: TextOverflow.ellipsis,
+                            overflow: TextOverflow.clip,
                             maxLines: 2,
                           )
                         ],
