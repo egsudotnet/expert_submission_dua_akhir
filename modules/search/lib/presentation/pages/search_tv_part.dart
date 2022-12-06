@@ -28,12 +28,8 @@ class SearchTvPart extends StatelessWidget {
                     ),
                   );
                 } else if (data is SearchTvsError) {
-                  return SizedBox(
-                    height: MediaQuery.of(context).size.height / 2,
-                    child: Center(
-                      key: const Key('error_message'),
-                      child: Text(data.message),
-                    ),
+                  return const Expanded(
+                    child: Center(child: Text("Empty"))
                   );
                 } else {
                   return const SizedBox();

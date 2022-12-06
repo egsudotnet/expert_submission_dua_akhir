@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
+import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -104,7 +105,7 @@ class DetailContent extends StatelessWidget {
     return Stack(
       children: [
         CachedNetworkImage(
-          imageUrl: 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+          imageUrl: '$baseImageUrl500${movie.posterPath}',
           width: screenWidth,
           placeholder: (context, url) => const Center(
             child: CircularProgressIndicator(),
@@ -192,9 +193,10 @@ class DetailContent extends StatelessWidget {
                               'Overview',
                               style: kHeading6,
                             ),
-                            Text(
-                              movie.overview,
-                            ),
+                            ExpandableText(movie.overview,
+                                maxLines: 4,
+                                expandText: 'show more',
+                                collapseText: 'show less'),
                             const SizedBox(height: 16),
                             Text(
                               'Recommendations',
@@ -238,7 +240,7 @@ class DetailContent extends StatelessWidget {
                                                 Radius.circular(8),
                                               ),
                                               child: Image.network(
-                                                  '$baseImageUrl${movie.posterPath}'),
+                                                  '$baseImageUrl200${movie.posterPath}'),
                                             ),
                                           ),
                                         );

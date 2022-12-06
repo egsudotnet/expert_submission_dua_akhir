@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tv/presentation/cubit/tv_top_rated_cubit.dart';
-import 'package:tv/presentation/widget/tv_card_list.dart';
+import 'package:widget/widget.dart';
 
 class TopRatedTvPage extends StatefulWidget {
   static const routeName = '/top-rated-tv';

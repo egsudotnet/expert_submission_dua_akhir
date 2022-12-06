@@ -66,7 +66,7 @@ class _EpisodeCardListState extends State<EpisodeCardList> {
                               child: Icon(Icons.error),
                             )
                           : CachedNetworkImage(
-                              imageUrl: '$baseImageUrl${data.stillPath}',
+                              imageUrl: '$baseImageUrl200${data.stillPath}',
                               fit: BoxFit.cover,
                               width: 100,
                               height: 100,
@@ -127,7 +127,7 @@ class _EpisodeCardListState extends State<EpisodeCardList> {
         } else if (eps is EpisodeInitial) {
           return const Center(
             key: Key('empty_message'),
-            child: Text('Episode tidak ditemukan'),
+            child: Text('Empty'),
           );
         } else {
           return const SizedBox();

@@ -25,6 +25,5 @@ export 'domain/usecase/get_popular_tv.dart';
 export 'domain/usecase/get_recommendation_tv.dart';
 export 'domain/usecase/get_top_rated_tv.dart';
 export 'domain/usecase/get_tv_episode.dart'; 
-
  
 export 'domain/entities/tv.dart';  

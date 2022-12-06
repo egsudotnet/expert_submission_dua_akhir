@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tv/presentation/cubit/tv_now_playing_cubit.dart';
-import 'package:tv/presentation/widget/tv_card_list.dart';
+import 'package:widget/widget.dart';
 
 class NowPlayingTvPage extends StatefulWidget {
   static const routeName = '/now-playing-tv';

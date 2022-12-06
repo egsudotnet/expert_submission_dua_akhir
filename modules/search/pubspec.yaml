@@ -18,6 +18,8 @@ dependencies:
     path: ../tv
   watchlist:
     path: ../watchlist
+  widget:
+    path: ../widget
   dartz: ^0.10.0
   equatable: ^2.0.3
   flutter:

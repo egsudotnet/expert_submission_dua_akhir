@@ -1,7 +1,8 @@
 const emptyImageUrl = 'assets/images/no_image.png';
 const apiKey = '2174d146bb9c0eab47529b2e77d6b526';  
 
-const baseImageUrl = 'https://image.tmdb.org/t/p/w500';
+const baseImageUrl500 = 'https://image.tmdb.org/t/p/w500';
+const baseImageUrl200 = 'https://image.tmdb.org/t/p/w300';
 const baseUrl = 'https://api.themoviedb.org/3';
 
 const certificate = '''-----BEGIN CERTIFICATE-----

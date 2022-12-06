@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
+import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -120,7 +121,7 @@ class _DetailTvContentState extends State<DetailTvContent>
     return Stack(
       children: [
         CachedNetworkImage(
-          imageUrl: 'https://image.tmdb.org/t/p/w500${widget.tv.posterPath}',
+          imageUrl: '$baseImageUrl500${widget.tv.posterPath}',
           width: screenWidth,
           placeholder: (context, url) => const Center(
             child: CircularProgressIndicator(),
@@ -228,7 +229,7 @@ class _DetailTvContentState extends State<DetailTvContent>
                                                 child: Icon(Icons.error),
                                               )
                                             : CachedNetworkImage(
-                                                imageUrl: '$baseImageUrl${season.posterPath}',
+                                                imageUrl: '$baseImageUrl200${season.posterPath}',
                                                 fit: BoxFit.cover,
                                                 width: 50,
                                                 height: 50,
@@ -265,9 +266,10 @@ class _DetailTvContentState extends State<DetailTvContent>
                               'Overview',
                               style: kHeading6,
                             ),
-                            Text(
-                              widget.tv.overview!,
-                            ),
+                            ExpandableText(widget.tv.overview!,
+                                maxLines: 4,
+                                expandText: 'show more',
+                                collapseText: 'show less'),
                             const SizedBox(height: 16),
                             Text(
                               'Recommendations',
@@ -313,7 +315,7 @@ class _DetailTvContentState extends State<DetailTvContent>
                                                 Radius.circular(8),
                                               ),
                                               child: Image.network(
-                                                '$baseImageUrl${tv.posterPath}',
+                                                '$baseImageUrl200${tv.posterPath}',
                                               ),
                                             ),
                                           ),

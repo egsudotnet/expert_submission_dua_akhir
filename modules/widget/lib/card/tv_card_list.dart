@@ -1,13 +1,13 @@
-import 'package:core/core.dart';
+import 'package:core/styles/text_style.dart';
+import 'package:core/utils/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:home/presentation/widget/image_card.dart';
-import 'package:movie/domain/entities/movie.dart';
-import 'package:movie/presentation/pages/movie_detail_page.dart';
+import 'package:tv/tv.dart';
+import 'package:widget/card/image_card.dart';
 
-class MovieCard extends StatelessWidget {
-  final Movie movie;
+class TvCard extends StatelessWidget {
+  final Tv tv;
 
-  const MovieCard(this.movie, {Key? key}) : super(key: key);
+  const TvCard({Key? key, required this.tv}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,8 @@ class MovieCard extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(
             context,
-            MovieDetailPage.routeName,
-            arguments: movie.id,
+            tvDetailRoute,
+            arguments: tv.id,
           );
         },
         child: Stack(
@@ -35,14 +35,14 @@ class MovieCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      movie.title ?? '-',
+                      tv.title ?? '-',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: kHeading6,
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      movie.overview ?? '-',
+                      tv.overview ?? '-',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -56,8 +56,12 @@ class MovieCard extends StatelessWidget {
                 bottom: 10,
               ),
               child: ClipRRect(
-                child: ImageCard(pathImage: movie.posterPath ?? "", width: 48, height: 60,),
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
+                child: ImageCard(
+                  pathImage: tv.posterPath ?? "",
+                  width: 48,
+                  height: 60,
+                ),
               ),
             ),
           ],

@@ -2,7 +2,6 @@ import 'package:core/core.dart';
 import 'package:core/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home/presentation/widget/image_card.dart';
 import 'package:movie/domain/entities/movie.dart';
 import 'package:movie/presentation/cubit/movie_now_playing_cubit.dart';
 import 'package:movie/presentation/cubit/movie_popular_cubit.dart';
@@ -11,6 +10,7 @@ import 'package:tv/domain/entities/tv.dart';
 import 'package:tv/presentation/cubit/tv_now_playing_cubit.dart';
 import 'package:tv/presentation/cubit/tv_popular_cubit.dart';
 import 'package:tv/presentation/cubit/tv_top_rated_cubit.dart';
+import 'package:widget/widget.dart';
 
 part 'home_movie_part.dart';
 part 'home_tv_part.dart';

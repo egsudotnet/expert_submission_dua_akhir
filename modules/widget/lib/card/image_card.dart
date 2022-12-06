@@ -11,10 +11,10 @@ class ImageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (pathImage.isNotEmpty) {
-      CachedNetworkImage _cachedNetworkImage;
+      CachedNetworkImage cachedNetworkImage;
       if (height == null && width != null) {
-        _cachedNetworkImage = CachedNetworkImage(
-          imageUrl: '$baseImageUrl$pathImage',
+        cachedNetworkImage = CachedNetworkImage(
+          imageUrl: '$baseImageUrl200$pathImage',
           width: width,
           placeholder: (context, url) => const Center(
             child: CircularProgressIndicator(),
@@ -22,8 +22,8 @@ class ImageCard extends StatelessWidget {
           errorWidget: (context, url, error) => const Icon(Icons.error),
         );
       } else if (height != null && width == null) {
-        _cachedNetworkImage = CachedNetworkImage(
-          imageUrl: '$baseImageUrl$pathImage',
+        cachedNetworkImage = CachedNetworkImage(
+          imageUrl: '$baseImageUrl200$pathImage',
           height: height,
           placeholder: (context, url) => const Center(
             child: CircularProgressIndicator(),
@@ -31,8 +31,8 @@ class ImageCard extends StatelessWidget {
           errorWidget: (context, url, error) => const Icon(Icons.error),
         );
       } else if (height != null && width != null) {
-        _cachedNetworkImage = CachedNetworkImage(
-          imageUrl: '$baseImageUrl$pathImage',
+        cachedNetworkImage = CachedNetworkImage(
+          imageUrl: '$baseImageUrl200$pathImage',
           width: width,
           height: height,
           placeholder: (context, url) => const Center(
@@ -41,15 +41,15 @@ class ImageCard extends StatelessWidget {
           errorWidget: (context, url, error) => const Icon(Icons.error),
         );
       } else {
-        _cachedNetworkImage = CachedNetworkImage(
-          imageUrl: '$baseImageUrl$pathImage',
+        cachedNetworkImage = CachedNetworkImage(
+          imageUrl: '$baseImageUrl200$pathImage',
           placeholder: (context, url) => const Center(
             child: CircularProgressIndicator(),
           ),
           errorWidget: (context, url, error) => const Icon(Icons.error),
         );
       }
-      return _cachedNetworkImage;
+      return cachedNetworkImage;
     } else {
       return const SizedBox();
     }

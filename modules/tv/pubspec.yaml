@@ -10,7 +10,7 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  cached_network_image: ^3.2.1
+  cached_network_image: ^3.2.3
   core:
     path: ../core
   movie:
@@ -19,6 +19,8 @@ dependencies:
     path: ../search
   watchlist:
     path: ../watchlist
+  widget:
+    path: ../widget
   dartz: ^0.10.0
   equatable: ^2.0.3
   flutter:
@@ -28,6 +30,7 @@ dependencies:
   rxdart: ^0.27.2
   flutter_rating_bar: ^4.0.1
   path_provider: ^2.0.11
+  expandable_text: ^2.3.0
 
 dev_dependencies:
   bloc_test: ^9.1.0

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie/presentation/widget/movie_card_list.dart';
 import 'package:search/presentation/bloc/movies/search_movies_bloc.dart';
 import 'package:search/presentation/bloc/tvs/search_tvs_bloc.dart';
-import 'package:tv/presentation/widget/tv_card_list.dart';
+import 'package:widget/widget.dart';
 
 part "search_movie_part.dart";
 part "search_tv_part.dart";
